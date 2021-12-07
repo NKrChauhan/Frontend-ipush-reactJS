@@ -58,11 +58,18 @@ const createSubscription = async ()=>{
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
   });
-  console.log(JSON.stringify(subscription))
+  let subscription_data = JSON.parse(JSON.stringify(subscription))
+  let keys = JSON.parse(JSON.stringify(subscription_data.keys))
+  const subscription_request_data = {
+                                      "endpoint": subscription.endpoint,
+                                      "public_key": keys.p256dh,
+                                      "auth_key": keys.auth
+                                    }
+  console.log(JSON.stringify(subscription_request_data))
 
   await fetch('http://127.0.0.1:8000/api/subscribe', {
     method: 'POST',
-    body: JSON.stringify(subscription),
+    body: JSON.stringify(subscription_request_data),
     dataType: 'text',
     headers: {
       "Content-Type": "application/json",
