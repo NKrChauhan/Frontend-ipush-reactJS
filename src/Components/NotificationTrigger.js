@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Swal from "sweetalert2";
 
 function NotificationTrigger(props) {
     const [title, setTitle] = useState("");
@@ -20,26 +21,56 @@ function NotificationTrigger(props) {
                     "Content-Type": "application/json",
                 },
                 }).then((res) => {
-                    console.log("the notification sent...")
+                    Swal.fire({
+                        title: 'SENT !',
+                        text: 'All subscriptions are processed',
+                        width: 600,
+                        padding: '3em',
+                        color: '#716add',
+                        background: '#fff',
+                        backdrop: `
+                        rgba(0,0,123,0.4)
+                        url("https://i.gifer.com/3APS.gif")
+                        left top
+                        no-repeat
+                        `
+                        })
                     console.log(res);
                 }).catch((err) => {
+                    Swal.fire({
+                        title: 'ERROR !',
+                        text: 'Do you want to continue, Try again...',
+                        width: 600,
+                        padding: '3em',
+                        color: '#716add',
+                        background: '#fff url(/images/trees.png)',
+                        backdrop: `
+                        rgba(0,0,123,0.4)
+                        url("https://c.tenor.com/kGFp0e2m_RsAAAAd/success.gif")
+                        left top
+                        no-repeat
+                        `
+                        })
                     console.log((err))
                 });
     }
     return (
       <center>
           <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <input className="form-control" id="notify-title" aria-describedby="titleNotify"
-                 placeholder="Notification Title" onChange={(e) => {setTitle(e.target.value);}}/>
+        <div className="input-container">
+          <input id="notify-title" aria-describedby="titleNotify"
+                 onChange={(e) => {setTitle(e.target.value);}} required/>
+            <label>Title</label>
         </div>
-        <div className="form-group">
-          <textarea className="form-control" id="notify-message" placeholder="Notitfication Content" onChange={(e) => {setMessage(e.target.value);}}/>
+        <div className="input-container">
+          <input id="notify-message" onChange={(e) => {setMessage(e.target.value);}} required/>
+            <label>Message</label>
         </div>
-        <div className="form-group">
-          <input className="form-control" id="notify-action" type="url" placeholder="Action Link Here !" onChange={(e) => {setActionURL(e.target.value);}}/>
+        <div className="input-container">
+          <input id="notify-action" type="url" onChange={(e) => {setActionURL(e.target.value);}} required/>
+            <label>Action Link</label>
         </div>
-        <button type="submit" style={{backgroundColor:"rgba(52,94,201,0.59)",backgroundImage:"url(https://scontent.fdel5-1.fna.fbcdn.net/v/t31.18172-8/14706922_270822779981869_825709977850394449_o.png?_nc_cat=103&ccb=1-5&_nc_sid=973b4a&_nc_ohc=ruyC6Y-rigcAX93oQYg&_nc_ht=scontent.fdel5-1.fna&oh=93c3a1ec9627cc7b92cfa57009cb83f5&oe=61BC6EDB)",backgroundSize:"contain",backgroundRepeat:"repeat-y"}} className="btn">_</button>
+        <button type="submit" data-toggle="tooltip" data-placement="left" title="Push !" style={{backgroundColor:"rgba(52,94,201,0.59)", color:"wheat"}} className="btn"><img src="https://scontent.fdel5-1.fna.fbcdn.net/v/t31.18172-8/14706922_270822779981869_825709977850394449_o.png?_nc_cat=103&ccb=1-5&_nc_sid=973b4a&_nc_ohc=ruyC6Y-rigcAX93oQYg&_nc_ht=scontent.fdel5-1.fna&oh=93c3a1ec9627cc7b92cfa57009cb83f5&oe=61BC6EDB" width={50}/> Send</button>
 
           </form>
       </center>

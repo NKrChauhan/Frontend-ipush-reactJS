@@ -37,14 +37,15 @@ function App() {
     <div className="App">
       <Navbar/>
       <header className="App-header">
-          <table>
+          <table style={{borderCollapse: "separate",
+              borderSpacing: "100px 0"}}>
               <tbody>
                   <tr>
                       <td>
                         <img src={logo} className="App-logo" alt="logo" />
                       </td>
-                      <td className="jumbotron" style={{backgroundColor:"#E7717D",width:"55%",backgroundImage:"url(https://www.freepnglogos.com/uploads/envelope-png/envelope-love-envelopes-dallas-texas-and-tulsa-oklahoma-6.png)",backgroundSize: "cover"}}>
-                          <h1 className="lead border-0 rounded border border-info" style={{marginBottom:"50px", fontSize:"50px", color:"rgba(111,34,50,0.73)"}}>Trigger Notification</h1>
+                      <td className="container" style={{width:"60%", backgroundSize: "cover"}}>
+                          <h1 className="lead border-0 rounded border border-info" style={{marginBottom:"50px", fontSize:"50px", color:"white"}}>Notification Details</h1>
                           <NotificationTrigger/>
                       </td>
                   </tr>
