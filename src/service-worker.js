@@ -63,10 +63,24 @@ registerRoute(
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
 
 // Any other custom service worker logic can go here.
+let response_url = ""
+self.addEventListener('push', function(event) {
+    let res_data = event.data.json()
+    let notificationTitle = res_data.title;
+    response_url = res_data.action_link
+    let notificationOptions = {
+        body: res_data.message,
+        image: "https://assets-global.website-files.com/6087a1057cbcdb826029cf64/60add99cad2d49337b262ffa_1519897592196e2159024400vbetatPZJOj8MpboApfyQ2tD8nh6IejhThegfaPPSQJikDMEg.png",
+        icon: "https://connectoricons-prod.azureedge.net/releases/v1.0.1535/1.0.1535.2607/flowpush/icon.png",
+    };
+    return self.registration.showNotification(notificationTitle,notificationOptions);
+});
+
+self.addEventListener('notificationclick', function(event) {
+  event.notification.close();
+  console.log(event)
+  event.waitUntil(self.clients.openWindow(response_url))
+});
+
