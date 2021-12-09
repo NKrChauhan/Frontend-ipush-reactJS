@@ -30,7 +30,7 @@ function NotificationTrigger(props) {
                         background: '#fff',
                         backdrop: `
                         rgba(0,0,123,0.4)
-                        url("https://i.gifer.com/3APS.gif")
+                        url("https://i.gifer.com/XfQB.gif")
                         left top
                         no-repeat
                         `
@@ -46,7 +46,7 @@ function NotificationTrigger(props) {
                         background: '#fff url(/images/trees.png)',
                         backdrop: `
                         rgba(0,0,123,0.4)
-                        url("https://c.tenor.com/kGFp0e2m_RsAAAAd/success.gif")
+                        url("https://i.gifer.com/XSNq.gif")
                         left top
                         no-repeat
                         `
@@ -70,7 +70,7 @@ function NotificationTrigger(props) {
           <input id="notify-action" type="url" onChange={(e) => {setActionURL(e.target.value);}} required/>
             <label>Action Link</label>
         </div>
-        <button type="submit" data-toggle="tooltip" data-placement="left" title="Push !" style={{backgroundColor:"rgba(52,94,201,0.59)", color:"wheat"}} className="btn"><img src="https://scontent.fdel5-1.fna.fbcdn.net/v/t31.18172-8/14706922_270822779981869_825709977850394449_o.png?_nc_cat=103&ccb=1-5&_nc_sid=973b4a&_nc_ohc=ruyC6Y-rigcAX93oQYg&_nc_ht=scontent.fdel5-1.fna&oh=93c3a1ec9627cc7b92cfa57009cb83f5&oe=61BC6EDB" width={50}/> Send</button>
+        <button type="submit" data-toggle="tooltip" data-placement="left" title="Push !" style={{backgroundColor:"white", color:"wheat", width:"150px"}} className="btn btn-lg"><img alt="Send" src="https://global-uploads.webflow.com/5efccc15b40a7dfbb529ea1a/5f2161c88e5c3168d8e2783a_Pushowl%20Logo%20Icon.png" width={50}/></button>
 
           </form>
       </center>

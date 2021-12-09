@@ -79,7 +79,7 @@
 }
 .btn{
 	color:#fff;
-	background-color:#e74c3c;
+	background-color: #e74c3c;
 	outline: none;
     border: 0;
     color: #fff;
@@ -105,4 +105,8 @@
 	font-size:12px;
 
 }
-
+button:focus {
+    outline: none !important;
+    border:5px solid #e74c3c;
+    box-shadow: 0 30px 40px rgba(101, 149, 255, 0.59);
+}
