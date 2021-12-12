@@ -72,7 +72,7 @@ function NotificationTrigger() {
                         sent_notification_ids.delete(notification_id)
                         Swal.fire({
                             title: 'SENT !',
-                            text: 'All subscriptions are processed',
+                            text: 'All subscriptions are processed for notification id: '+notification_id,
                             width: 600,
                             padding: '3em',
                             color: '#716add',
@@ -88,7 +88,7 @@ function NotificationTrigger() {
                     if (data['status'] === 'Failed') {
                         sent_notification_ids.delete(notification_id)
                         Swal.fire({
-                            title: 'Failed !',
+                            title: 'Failed!, Notification Id: '+notification_id,
                             text: 'Try again, maybe this time it will work.',
                             width: 600,
                             padding: '3em',
