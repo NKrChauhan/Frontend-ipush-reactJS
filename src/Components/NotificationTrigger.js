@@ -50,7 +50,6 @@ function NotificationTrigger() {
 
     useEffect(()=>{
         console.log("hook initiated...")
-        console.log(sent_notification_ids)
         update_notification_status(sent_notification_ids)
     },)
 
@@ -67,7 +66,6 @@ function NotificationTrigger() {
                 }).then((res) =>
                     res.json()
                 ).then(data => {
-                    console.log(data)
                     if (data['status'] === 'Completed') {
                         sent_notification_ids.delete(notification_id)
                         Swal.fire({
@@ -84,6 +82,7 @@ function NotificationTrigger() {
                         no-repeat
                         `
                         })
+                        console.log(notification_id + " task completed")
                     }
                     if (data['status'] === 'Failed') {
                         sent_notification_ids.delete(notification_id)
@@ -102,7 +101,6 @@ function NotificationTrigger() {
                         `
                         })
                     }
-                    console.log(sent_notification_ids)
                 }).catch((err) => {
                     Swal.fire({
                         title: 'ERROR !',
